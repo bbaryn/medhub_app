@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h2.page-header User info
+  p Please add your personal information
+  if errors
+    each error, i in errors
+      div.alert.alert-danger #{error.msg}
+  form(method='post', action='/users/databases')
+    .form-group
+    label Date of birth
+    input.form-control(name='dateofbirth', type='date', placeholder='Enter date of birth', autofocus)
+    .form-group
+    label PESEL
+    input.form-control(name='pesel', type='number', placeholder='Enter PESEL')
+    .form-group
+    label Address
+    input.form-control(name='address', type='text', placeholder='Enter address')
+    .form-group
+    label Postal Code
+    input.form-control(name='postalcode', type='number', placeholder='Enter postal code')
+    .form-group
+    label City
+    input.form-control(name='city', type='text', placeholder='Enter city')
+    .form-group
+    input.btn.btn-primary(type='submit', name='submit', value='Send')

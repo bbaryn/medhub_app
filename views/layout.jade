@@ -15,15 +15,20 @@ html(lang='en')
           span.navbar-toggler-icon
         #navbarNav.collapse.navbar-collapse
           ul.navbar-nav
-            li.nav-item(class=(title == 'Members' ? 'active' : ''))
-              a.nav-link(href='/') Members
-            li.nav-item(class=(title == 'Register' ? 'active' : ''))
-              a.nav-link(href='/users/register') Register
-            li.nav-item(class=(title == 'Login' ? 'active' : ''))
-              a.nav-link(href='/users/login') Login
+            if user
+              li.nav-item(class=(title == 'Members' ? 'active' : ''))
+                a.nav-link(href='/') Members
+              li.nav-item(class=(title == 'Database' ? 'active' : ''))
+                a.nav-link(href='/users/databases') Database
+            if !user
+              li.nav-item(class=(title == 'Register' ? 'active' : ''))
+                a.nav-link(href='/users/register') Register
+              li.nav-item(class=(title == 'Login' ? 'active' : ''))
+                a.nav-link(href='/users/login') Login
           ul.nav.navbar-nav.ml-auto
-            li.nav-item
-              a.nav-link(href='#') Logout
+            if user
+              li.nav-item
+                a.nav-link(href='/users/logout') Logout
 
     .container
      != messages()
